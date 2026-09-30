@@ -16,4 +16,14 @@ class DiagnosticCase extends Model
         'recommendations',
         'is_public',
     ];
+
+    public function organization()
+    {
+        return $this->belongsTo(Organization::class);
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }

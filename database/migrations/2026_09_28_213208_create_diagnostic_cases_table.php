@@ -19,6 +19,8 @@ return new class extends Migration
             $table->text('needs')->nullable();
             $table->text('recommendations')->nullable();
             $table->boolean('is_public')->default(false);
+            $table->foreignId('organization_id')->nullable();
+            $table->foreignId('user_id')->nullable();
             $table->timestamps();
         });
     }

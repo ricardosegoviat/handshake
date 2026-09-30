@@ -14,4 +14,10 @@ class Organization extends Model
         'org_type',
         'org_size',
     ];
+
+    public function cases()
+    {
+        return $this->hasMany(DiagnosticCase::class);
+    }
+    
 }
