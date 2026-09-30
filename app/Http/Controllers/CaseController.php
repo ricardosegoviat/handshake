@@ -13,4 +13,9 @@ class CaseController extends Controller
 
         return view('cases.index', ['cases' => $cases]);
     }
+
+public function show(DiagnosticCase $case)
+{
+    return view('cases.show', ['case' => $case]);
+}
 }

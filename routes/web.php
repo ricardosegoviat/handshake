@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [WelcomeController::class, 'index']);
 Route::get('/cases', [CaseController::class, 'index'])->name('cases.index');
+Route::get('/cases/{case}', [CaseController::class, 'show'])->name('cases.show');
 
 
 Route::get('/dashboard', function () {
