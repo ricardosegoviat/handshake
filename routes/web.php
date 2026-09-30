@@ -1,9 +1,12 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\WelcomeController;
+use App\Http\Controllers\CaseController;
+use Illuminate\Support\Facades\Route;
 
 Route::get('/', [WelcomeController::class, 'index']);
+Route::get('/cases', [CaseController::class, 'index'])->name('cases.index');
+
 
 Route::get('/dashboard', function () {
     return view('userzone.dashboard');
