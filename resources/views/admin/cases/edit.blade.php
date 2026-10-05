@@ -25,11 +25,7 @@
             <textarea name="recommendations" id="recommendations" placeholder="What do you recommend?">{{ old('recommendations', $case->recommendations) }}</textarea>
         </div>
 
-        <div>
-            <label for="user_id">Consultant*</label><br>
-            <input type="number" name="user_id" id="user_id" placeholder="User ID" value="{{ old('user_id', $case->user_id) }}">
-            @error('user_id') <div style="color: red;">{{ $message }}</div> @enderror
-        </div>
+        <x-form-number-input name="user_id" label="Consultant*" placeholder="User ID" value="{{ $case->user_id }}" />
 
         <button type="submit">Save changes</button>
     </form>
