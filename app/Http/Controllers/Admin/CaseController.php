@@ -26,7 +26,6 @@ class CaseController extends Controller
             'title' => ['required', 'string', 'max:255'],
             'description' => ['required', 'string'],
             'maturity_level' => ['required', 'string', 'max:255'],
-            'user_id' => ['required', 'integer', 'exists:users,id'],
         ]);
 
         // Create a new case
@@ -36,7 +35,7 @@ class CaseController extends Controller
             'maturity_level' => $request['maturity_level'],
             'needs' => $request['needs'],
             'recommendations' => $request['recommendations'],
-            'user_id' => $request['user_id'],
+            'user_id' => auth()->id(),
         ]);
 
         return redirect()->route('admin.cases.index');

@@ -18,6 +18,15 @@
                     <x-breeze.nav-link :href="route('cases.index')" :active="request()->routeIs('cases.*')">
                         Cases
                     </x-breeze.nav-link>
+                    @auth
+                        <x-breeze.nav-link :href="route('admin.cases.index')" :active="request()->routeIs('admin.cases.*')">
+                            Case management
+                        </x-breeze.nav-link>
+                    @else
+                        <x-breeze.nav-link :href="route('login')">
+                            Login
+                        </x-breeze.nav-link>
+                    @endauth
                 </div>
             </div>
 
@@ -76,6 +85,15 @@
             <x-breeze.responsive-nav-link :href="route('cases.index')" :active="request()->routeIs('cases.*')">
                 Cases
             </x-breeze.responsive-nav-link>
+            @auth
+                <x-breeze.responsive-nav-link :href="route('admin.cases.index')" :active="request()->routeIs('admin.cases.*')">
+                    Case management
+                </x-breeze.responsive-nav-link>
+            @else
+                <x-breeze.responsive-nav-link :href="route('login')">
+                    Login
+                </x-breeze.responsive-nav-link>
+            @endauth
         </div>
 
         <!-- Responsive Settings Options -->

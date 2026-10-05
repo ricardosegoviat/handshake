@@ -14,8 +14,6 @@
 
         <x-form-textarea name="recommendations" label="Recommendations" placeholder="What do you recommend?" />
 
-        <x-form-number-input name="user_id" label="Consultant*" placeholder="User ID" />
-
         <button type="submit">Create case</button>
     </form>
 </x-app-layout>

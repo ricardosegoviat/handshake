@@ -11,12 +11,14 @@ Route::get('/cases/{case}', [CaseController::class, 'show'])->name('cases.show')
 
 // Management routes (logged-in users)
 // CRUD for cases
-Route::get('admin/cases', [App\Http\Controllers\Admin\CaseController::class, 'index'])->name('admin.cases.index');
-Route::get('admin/cases/create', [App\Http\Controllers\Admin\CaseController::class, 'create'])->name('admin.cases.create');
-Route::post('admin/cases', [App\Http\Controllers\Admin\CaseController::class, 'store'])->name('admin.cases.store');
-Route::get('admin/cases/{case}/edit', [App\Http\Controllers\Admin\CaseController::class, 'edit'])->name('admin.cases.edit');
-Route::put('admin/cases/{case}', [App\Http\Controllers\Admin\CaseController::class, 'update'])->name('admin.cases.update');
-Route::delete('admin/cases/{case}', [App\Http\Controllers\Admin\CaseController::class, 'destroy'])->name('admin.cases.destroy');
+Route::middleware(['auth'])->group(function () {
+    Route::get('admin/cases', [App\Http\Controllers\Admin\CaseController::class, 'index'])->name('admin.cases.index');
+    Route::get('admin/cases/create', [App\Http\Controllers\Admin\CaseController::class, 'create'])->name('admin.cases.create');
+    Route::post('admin/cases', [App\Http\Controllers\Admin\CaseController::class, 'store'])->name('admin.cases.store');
+    Route::get('admin/cases/{case}/edit', [App\Http\Controllers\Admin\CaseController::class, 'edit'])->name('admin.cases.edit');
+    Route::put('admin/cases/{case}', [App\Http\Controllers\Admin\CaseController::class, 'update'])->name('admin.cases.update');
+    Route::delete('admin/cases/{case}', [App\Http\Controllers\Admin\CaseController::class, 'destroy'])->name('admin.cases.destroy');
+});
 
 Route::get('/dashboard', function () {
     return view('userzone.dashboard');
