@@ -5,7 +5,7 @@
 
             @forelse ($cases as $case)
                 <div class="bg-white p-4 mb-4 rounded shadow">
-                    <h2 class="text-lg font-semibold">{{ $case->title }}</h2>
+                    <h2 class="text-lg font-semibold"><a href="{{ route('cases.show', $case) }}" class="hover:underline">{{ $case->title }}</a></h2>
                     <p>{{ $case->description }}</p>
                 </div>
             @empty
