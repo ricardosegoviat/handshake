@@ -15,6 +15,8 @@ class DiagnosticCase extends Model
         'needs',
         'recommendations',
         'is_public',
+        'organization_id',
+        'user_id',
     ];
 
     public function organization()

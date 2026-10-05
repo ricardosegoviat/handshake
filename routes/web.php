@@ -12,6 +12,8 @@ Route::get('/cases/{case}', [CaseController::class, 'show'])->name('cases.show')
 // Management routes (logged-in users)
 // CRUD for cases
 Route::get('admin/cases', [App\Http\Controllers\Admin\CaseController::class, 'index'])->name('admin.cases.index');
+Route::get('admin/cases/create', [App\Http\Controllers\Admin\CaseController::class, 'create'])->name('admin.cases.create');
+Route::post('admin/cases', [App\Http\Controllers\Admin\CaseController::class, 'store'])->name('admin.cases.store');
 
 Route::get('/dashboard', function () {
     return view('userzone.dashboard');
