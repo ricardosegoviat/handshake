@@ -5,6 +5,7 @@
             <p class="text-sm text-gray-500 mb-6">Maturity level: {{ $case->maturity_level }}</p>
             <p>Organization: {{ $case->organization?->name ?? 'Unassigned' }}</p>
             <p>Consultant: {{ $case->user?->name ?? 'unknown' }}</p>
+            <p>Topics: @forelse($case->topics as $topic){{ $topic->name }}@if(!$loop->last), @endif @empty none @endforelse</p>
             <div class="bg-white p-4 rounded shadow">
                 <h2 class="font-semibold mb-2">Description</h2>
                 <p class="mb-4">{{ $case->description }}</p>

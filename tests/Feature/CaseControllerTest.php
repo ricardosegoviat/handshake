@@ -3,6 +3,7 @@
 use App\Models\DiagnosticCase;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use App\Models\User;
+use App\Models\Topic;
 
 uses(RefreshDatabase::class);
 
@@ -78,3 +79,23 @@ it('does not list private cases on the index page', function () {
         $response->assertSee('Hello World');
         $response->assertSee('by unknown');
     });
+it('shows the topics on the case details page', function () {
+    // Arrange
+    $case = DiagnosticCase::factory()->create([
+        'is_public' => true,
+    ]);
+
+    $topic = Topic::factory()->create([
+        'name' => 'Governance',
+    ]);
+
+    $case->topics()->attach($topic);
+
+    // Act
+    $response = $this->get('/cases/' . $case->id);
+
+    // Assert
+    $response->assertStatus(200);
+    $response->assertSee('Topics:');
+    $response->assertSee('Governance');
+});
