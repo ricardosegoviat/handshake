@@ -10,7 +10,11 @@ class CaseController extends Controller
 {
     public function index()
     {
-        $cases = DiagnosticCase::all();
+        if (auth()->user()->is_admin) {
+            $cases = DiagnosticCase::all();
+        } else {
+            $cases = DiagnosticCase::where('user_id', auth()->id())->get();
+        }
 
         return view('admin.cases.index', compact('cases'));
     }
