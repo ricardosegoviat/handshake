@@ -37,9 +37,14 @@ class DatabaseSeeder extends Seeder
 
         Provider::factory(5)->create();
 
-        DiagnosticCase::factory(10)->create();
+        $cases = DiagnosticCase::factory(10)->create();
 
         ProviderMatch::factory(20)->create();
+
         Topic::factory(5)->create();
+
+        foreach ($cases as $case) {
+            $case->topics()->attach(Topic::inRandomOrder()->take(rand(0, 3))->pluck('id'));
+        }
     }
 }

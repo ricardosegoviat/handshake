@@ -35,4 +35,9 @@ class DiagnosticCase extends Model
     {
         return $this->hasMany(ProviderMatch::class, 'case_id')->oldest();
     }
+
+    public function topics()
+    {
+        return $this->belongsToMany(Topic::class, 'case_topic', 'case_id', 'topic_id');
+    }
 }

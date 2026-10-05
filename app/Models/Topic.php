@@ -10,4 +10,8 @@ class Topic extends Model
     /** @use HasFactory<\Database\Factories\TopicFactory> */
     use HasFactory;
     protected $fillable = ['name'];
+    public function cases()
+    {
+        return $this->belongsToMany(DiagnosticCase::class, 'case_topic', 'topic_id', 'case_id');
+    }
 }
