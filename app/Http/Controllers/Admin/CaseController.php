@@ -59,4 +59,11 @@ class CaseController extends Controller
 
         return redirect()->route('admin.cases.index');
     }
+
+    public function destroy(DiagnosticCase $case)
+    {
+        $case->delete();
+
+        return redirect()->route('admin.cases.index');
+    }
 }
