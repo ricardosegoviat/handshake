@@ -8,5 +8,6 @@ test('Test welcome page content', function () {
 
     // Assert
     $response->assertStatus(200);
-    $response->assertSee('Laravel');
+    $response->assertSee('Welcome to Handshake');
+    $response->assertSee('Home');
 });
