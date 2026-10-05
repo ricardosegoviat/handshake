@@ -10,6 +10,9 @@ Route::get('/cases', [CaseController::class, 'index'])->name('cases.index');
 Route::get('/cases/{case}', [CaseController::class, 'show'])->name('cases.show');
 
 // Management routes (logged-in users)
+// CRUD for cases
+Route::get('admin/cases', [App\Http\Controllers\Admin\CaseController::class, 'index'])->name('admin.cases.index');
+
 Route::get('/dashboard', function () {
     return view('userzone.dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
