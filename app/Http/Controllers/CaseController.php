@@ -16,6 +16,9 @@ class CaseController extends Controller
 
 public function show(DiagnosticCase $case)
 {
+    $case->load('matches.provider');
+
     return view('cases.show', ['case' => $case]);
 }
+
 }

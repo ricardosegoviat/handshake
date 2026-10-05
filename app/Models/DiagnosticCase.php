@@ -28,6 +28,6 @@ class DiagnosticCase extends Model
     }
     public function matches()
     {
-        return $this->hasMany(ProviderMatch::class, 'case_id');
+        return $this->hasMany(ProviderMatch::class, 'case_id')->oldest();
     }
 }
