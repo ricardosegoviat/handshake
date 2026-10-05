@@ -5,33 +5,37 @@
         @csrf
 
         <div>
-            <label for="title">Title</label><br>
-            <input type="text" name="title" id="title" placeholder="Title">
+            <label for="title">Title*</label><br>
+            <input type="text" name="title" id="title" placeholder="Title" value="{{ old('title') }}">
+            @error('title') <div style="color: red;">{{ $message }}</div> @enderror
         </div>
 
         <div>
-            <label for="description">Description</label><br>
-            <textarea name="description" id="description" placeholder="Describe the case"></textarea>
+            <label for="description">Description*</label><br>
+            <textarea name="description" id="description" placeholder="Describe the case">{{ old('description') }}</textarea>
+            @error('description') <div style="color: red;">{{ $message }}</div> @enderror
         </div>
 
         <div>
-            <label for="maturity_level">Maturity level</label><br>
-            <input type="text" name="maturity_level" id="maturity_level" placeholder="basic, developing or advanced">
+            <label for="maturity_level">Maturity level*</label><br>
+            <input type="text" name="maturity_level" id="maturity_level" placeholder="basic, developing or advanced" value="{{ old('maturity_level') }}">
+            @error('maturity_level') <div style="color: red;">{{ $message }}</div> @enderror
         </div>
 
         <div>
             <label for="needs">Needs</label><br>
-            <textarea name="needs" id="needs" placeholder="What does the organization need?"></textarea>
+            <textarea name="needs" id="needs" placeholder="What does the organization need?">{{ old('needs') }}</textarea>
         </div>
 
         <div>
             <label for="recommendations">Recommendations</label><br>
-            <textarea name="recommendations" id="recommendations" placeholder="What do you recommend?"></textarea>
+            <textarea name="recommendations" id="recommendations" placeholder="What do you recommend?">{{ old('recommendations') }}</textarea>
         </div>
 
         <div>
-            <label for="user_id">Consultant</label><br>
-            <input type="number" name="user_id" id="user_id" placeholder="User ID" value="1">
+            <label for="user_id">Consultant*</label><br>
+            <input type="number" name="user_id" id="user_id" placeholder="User ID" value="{{ old('user_id') }}">
+            @error('user_id') <div style="color: red;">{{ $message }}</div> @enderror
         </div>
 
         <button type="submit">Create case</button>

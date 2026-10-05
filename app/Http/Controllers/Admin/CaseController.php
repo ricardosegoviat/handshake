@@ -22,7 +22,12 @@ class CaseController extends Controller
 
     public function store(Request $request)
     {
-        // Validate the request (form data)
+        $request->validate([
+            'title' => ['required', 'string', 'max:255'],
+            'description' => ['required', 'string'],
+            'maturity_level' => ['required', 'string', 'max:255'],
+            'user_id' => ['required', 'integer', 'exists:users,id'],
+        ]);
 
         // Create a new case
         DiagnosticCase::create([
@@ -46,7 +51,12 @@ class CaseController extends Controller
 
     public function update(Request $request, DiagnosticCase $case)
     {
-        // Validate the request (form data)
+        $request->validate([
+            'title' => ['required', 'string', 'max:255'],
+            'description' => ['required', 'string'],
+            'maturity_level' => ['required', 'string', 'max:255'],
+            'user_id' => ['required', 'integer', 'exists:users,id'],
+        ]);
 
         $case->update([
             'title' => $request['title'],
