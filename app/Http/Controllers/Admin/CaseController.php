@@ -36,4 +36,27 @@ class CaseController extends Controller
 
         return redirect()->route('admin.cases.index');
     }
+
+    public function edit(DiagnosticCase $case)
+    {
+        // $case contains the referenced case
+
+        return view('admin.cases.edit', compact('case'));
+    }
+
+    public function update(Request $request, DiagnosticCase $case)
+    {
+        // Validate the request (form data)
+
+        $case->update([
+            'title' => $request['title'],
+            'description' => $request['description'],
+            'maturity_level' => $request['maturity_level'],
+            'needs' => $request['needs'],
+            'recommendations' => $request['recommendations'],
+            'user_id' => $request['user_id'],
+        ]);
+
+        return redirect()->route('admin.cases.index');
+    }
 }

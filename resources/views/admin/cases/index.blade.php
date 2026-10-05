@@ -4,7 +4,7 @@
     </div>
     @foreach($cases as $case)
         <div>
-            {{ $case->title }} <a href="">edit</a> <a href="">delete</a>
+            {{ $case->title }} <a href="{{ route('admin.cases.edit', $case->id) }}">edit</a> <a href="">delete</a>
         </div>
     @endforeach
 </x-app-layout>
