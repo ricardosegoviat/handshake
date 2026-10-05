@@ -3,8 +3,8 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-
 use Illuminate\Database\Eloquent\Model;
+use App\Models\User;
 
 class DiagnosticCase extends Model
 {
@@ -39,5 +39,17 @@ class DiagnosticCase extends Model
     public function topics()
     {
         return $this->belongsToMany(Topic::class, 'case_topic', 'case_id', 'topic_id');
+    }
+    public function canChange(User $user): bool
+    {
+        if ($user->id === $this->user_id) {
+            return true;
+        }
+
+        if ($user->is_admin) {
+            return true;
+        }
+
+        return false;
     }
 }

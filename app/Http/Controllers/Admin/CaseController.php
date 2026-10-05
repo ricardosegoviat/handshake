@@ -47,13 +47,18 @@ class CaseController extends Controller
 
     public function edit(DiagnosticCase $case)
     {
-        // $case contains the referenced case
+        if (! $case->canChange(auth()->user())) {
+            abort(401);
+        }
 
         return view('admin.cases.edit', compact('case'));
     }
 
     public function update(Request $request, DiagnosticCase $case)
     {
+        if (! $case->canChange(auth()->user())) {
+            abort(401);
+        }
         $request->validate([
             'title' => ['required', 'string', 'max:255'],
             'description' => ['required', 'string'],
@@ -75,6 +80,9 @@ class CaseController extends Controller
 
     public function destroy(DiagnosticCase $case)
     {
+        if (! $case->canChange(auth()->user())) {
+            abort(401);
+        }
         $case->delete();
 
         return redirect()->route('admin.cases.index');
