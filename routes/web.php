@@ -3,11 +3,14 @@
 use App\Http\Controllers\WelcomeController;
 use App\Http\Controllers\CaseController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ConsultantController;
 
 // Public routes of the application
 Route::get('/', [WelcomeController::class, 'index']);
 Route::get('/cases', [CaseController::class, 'index'])->name('cases.index');
 Route::get('/cases/{case}', [CaseController::class, 'show'])->name('cases.show');
+Route::get('/consultants', [ConsultantController::class, 'index'])->name('consultants.index');
+Route::get('/consultants/{user}', [ConsultantController::class, 'show'])->name('consultants.show');
 
 // Management routes (logged-in users)
 // CRUD for cases

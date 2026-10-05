@@ -6,7 +6,11 @@
             @forelse ($cases as $case)
                 <div class="bg-white p-4 mb-4 rounded shadow">
                     <h2 class="text-lg font-semibold"><a href="{{ route('cases.show', $case) }}" class="hover:underline">{{ $case->title }}</a></h2>
-                    <p class="text-sm text-gray-500">by {{ $case->user?->name ?? 'unknown' }}</p>
+                    @if($case->user)
+                        <p class="text-sm text-gray-500"><a href="{{ route('consultants.show', $case->user) }}" class="hover:underline">by {{ $case->user->name }}</a></p>
+                    @else
+                        <p class="text-sm text-gray-500">by unknown</p>
+                    @endif
                     <p>{{ $case->description }}</p>
                 </div>
             @empty
