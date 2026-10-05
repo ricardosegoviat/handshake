@@ -4,11 +4,7 @@
 
         @csrf
 
-        <div>
-            <label for="title">Title*</label><br>
-            <input type="text" name="title" id="title" placeholder="Title" value="{{ old('title') }}">
-            @error('title') <div style="color: red;">{{ $message }}</div> @enderror
-        </div>
+        <x-form-text-input name="title" label="Title*" placeholder="Title" />
 
         <div>
             <label for="description">Description*</label><br>
@@ -16,11 +12,7 @@
             @error('description') <div style="color: red;">{{ $message }}</div> @enderror
         </div>
 
-        <div>
-            <label for="maturity_level">Maturity level*</label><br>
-            <input type="text" name="maturity_level" id="maturity_level" placeholder="basic, developing or advanced" value="{{ old('maturity_level') }}">
-            @error('maturity_level') <div style="color: red;">{{ $message }}</div> @enderror
-        </div>
+        <x-form-text-input name="maturity_level" label="Maturity level*" placeholder="basic, developing or advanced" />
 
         <div>
             <label for="needs">Needs</label><br>
