@@ -4,11 +4,12 @@ use App\Http\Controllers\WelcomeController;
 use App\Http\Controllers\CaseController;
 use Illuminate\Support\Facades\Route;
 
+// Public routes of the application
 Route::get('/', [WelcomeController::class, 'index']);
 Route::get('/cases', [CaseController::class, 'index'])->name('cases.index');
 Route::get('/cases/{case}', [CaseController::class, 'show'])->name('cases.show');
 
-
+// Management routes (logged-in users)
 Route::get('/dashboard', function () {
     return view('userzone.dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
