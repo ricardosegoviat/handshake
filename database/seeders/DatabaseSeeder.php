@@ -9,6 +9,7 @@ use App\Models\ProviderMatch;
 use App\Models\User;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use App\Models\Topic;
 
 class DatabaseSeeder extends Seeder
 {
@@ -39,5 +40,6 @@ class DatabaseSeeder extends Seeder
         DiagnosticCase::factory(10)->create();
 
         ProviderMatch::factory(20)->create();
+        Topic::factory(5)->create();
     }
 }
