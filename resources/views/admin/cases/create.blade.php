@@ -14,6 +14,8 @@
 
         <x-form-textarea name="recommendations" label="Recommendations" placeholder="What do you recommend?" />
 
+        <x-form-checkboxes name="topics" label="Topics" :options="$topic_options" />
+
         <button type="submit">Create case</button>
     </form>
 </x-app-layout>

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\DiagnosticCase;
+use App\Models\Topic;
 use Illuminate\Http\Request;
 
 class CaseController extends Controller
@@ -21,7 +22,9 @@ class CaseController extends Controller
 
     public function create()
     {
-        return view('admin.cases.create');
+        $topic_options = Topic::orderBy('name')->pluck('name', 'id')->toArray();
+
+        return view('admin.cases.create', compact('topic_options'));
     }
 
     public function store(Request $request)
@@ -30,10 +33,11 @@ class CaseController extends Controller
             'title' => ['required', 'string', 'max:255'],
             'description' => ['required', 'string'],
             'maturity_level' => ['required', 'string', 'max:255'],
+            'topics' => ['nullable', 'array'],
         ]);
 
         // Create a new case
-        DiagnosticCase::create([
+        $case = DiagnosticCase::create([
             'title' => $request['title'],
             'description' => $request['description'],
             'maturity_level' => $request['maturity_level'],
@@ -41,6 +45,8 @@ class CaseController extends Controller
             'recommendations' => $request['recommendations'],
             'user_id' => auth()->id(),
         ]);
+
+        $case->topics()->sync($request['topics'] ?? []);
 
         return redirect()->route('admin.cases.index');
     }
@@ -51,7 +57,9 @@ class CaseController extends Controller
             abort(401);
         }
 
-        return view('admin.cases.edit', compact('case'));
+        $topic_options = Topic::orderBy('name')->pluck('name', 'id')->toArray();
+
+        return view('admin.cases.edit', compact('case', 'topic_options'));
     }
 
     public function update(Request $request, DiagnosticCase $case)
@@ -64,6 +72,7 @@ class CaseController extends Controller
             'description' => ['required', 'string'],
             'maturity_level' => ['required', 'string', 'max:255'],
             'user_id' => ['required', 'integer', 'exists:users,id'],
+            'topics' => ['nullable', 'array'],
         ]);
 
         $case->update([
@@ -74,6 +83,8 @@ class CaseController extends Controller
             'recommendations' => $request['recommendations'],
             'user_id' => $request['user_id'],
         ]);
+
+        $case->topics()->sync($request['topics'] ?? []);
 
         return redirect()->route('admin.cases.index');
     }

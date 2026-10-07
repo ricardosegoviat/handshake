@@ -17,6 +17,8 @@
 
         <x-form-number-input name="user_id" label="Consultant*" placeholder="User ID" value="{{ $case->user_id }}" />
 
+        <x-form-checkboxes name="topics" label="Topics" :values="$case->topics->pluck('id')->toArray()" :options="$topic_options" />
+
         <button type="submit">Save changes</button>
     </form>
 </x-app-layout>
