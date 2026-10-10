@@ -1,21 +1,26 @@
 <x-app-layout>
-    <h1>Create new case</h1>
-    <form action="{{ route('admin.cases.store') }}" method="POST">
+    <div class="py-12">
+        <div class="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h1 class="text-2xl font-bold mb-6">Create new case</h1>
 
-        @csrf
+            <form action="{{ route('admin.cases.store') }}" method="POST" class="bg-white p-6 rounded-lg shadow-sm">
 
-        <x-form-text-input name="title" label="Title*" placeholder="Title" />
+                @csrf
 
-        <x-form-textarea name="description" label="Description*" placeholder="Describe the case" />
+                <x-form-text-input name="title" label="Title*" placeholder="Title" />
 
-        <x-form-text-input name="maturity_level" label="Maturity level*" placeholder="basic, developing or advanced" />
+                <x-form-textarea name="description" label="Description*" placeholder="Describe the case" />
 
-        <x-form-textarea name="needs" label="Needs" placeholder="What does the organization need?" />
+                <x-form-text-input name="maturity_level" label="Maturity level*" placeholder="basic, developing or advanced" />
 
-        <x-form-textarea name="recommendations" label="Recommendations" placeholder="What do you recommend?" />
+                <x-form-textarea name="needs" label="Needs" placeholder="What does the organization need?" />
 
-        <x-form-checkboxes name="topics" label="Topics" :options="$topic_options" />
+                <x-form-textarea name="recommendations" label="Recommendations" placeholder="What do you recommend?" />
 
-        <button type="submit">Create case</button>
-    </form>
+                <x-form-checkboxes name="topics" label="Topics" :options="$topic_options" />
+
+                <button type="submit" class="rounded-md bg-indigo-600 px-4 py-2 text-sm font-semibold text-white hover:bg-indigo-500">Create case</button>
+            </form>
+        </div>
+    </div>
 </x-app-layout>
