@@ -31,6 +31,9 @@
                         <x-breeze.nav-link :href="route('admin.cases.index')" :active="request()->routeIs('admin.cases.*')">
                             Case management
                         </x-breeze.nav-link>
+                        <x-breeze.nav-link :href="route('admin.topics.index')" :active="request()->routeIs('admin.topics.*')">
+                            Topic management
+                        </x-breeze.nav-link>
                     @else
                         <x-breeze.nav-link :href="route('login')">
                             Login
@@ -106,6 +109,9 @@
             @auth
                 <x-breeze.responsive-nav-link :href="route('admin.cases.index')" :active="request()->routeIs('admin.cases.*')">
                     Case management
+                </x-breeze.responsive-nav-link>
+                <x-breeze.responsive-nav-link :href="route('admin.topics.index')" :active="request()->routeIs('admin.topics.*')">
+                    Topic management
                 </x-breeze.responsive-nav-link>
             @else
                 <x-breeze.responsive-nav-link :href="route('login')">

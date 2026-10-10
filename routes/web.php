@@ -24,6 +24,14 @@ Route::middleware(['auth'])->group(function () {
     Route::get('admin/cases/{case}/edit', [App\Http\Controllers\Admin\CaseController::class, 'edit'])->name('admin.cases.edit');
     Route::put('admin/cases/{case}', [App\Http\Controllers\Admin\CaseController::class, 'update'])->name('admin.cases.update');
     Route::delete('admin/cases/{case}', [App\Http\Controllers\Admin\CaseController::class, 'destroy'])->name('admin.cases.destroy');
+
+    // CRUD for topics
+    Route::get('admin/topics', [App\Http\Controllers\Admin\TopicController::class, 'index'])->name('admin.topics.index');
+    Route::get('admin/topics/create', [App\Http\Controllers\Admin\TopicController::class, 'create'])->name('admin.topics.create');
+    Route::post('admin/topics', [App\Http\Controllers\Admin\TopicController::class, 'store'])->name('admin.topics.store');
+    Route::get('admin/topics/{topic}/edit', [App\Http\Controllers\Admin\TopicController::class, 'edit'])->name('admin.topics.edit');
+    Route::put('admin/topics/{topic}', [App\Http\Controllers\Admin\TopicController::class, 'update'])->name('admin.topics.update');
+    Route::delete('admin/topics/{topic}', [App\Http\Controllers\Admin\TopicController::class, 'destroy'])->name('admin.topics.destroy');
 });
 
 Route::get('/dashboard', function () {
