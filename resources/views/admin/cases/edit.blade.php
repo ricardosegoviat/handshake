@@ -15,7 +15,7 @@
 
         <x-form-textarea name="recommendations" label="Recommendations" placeholder="What do you recommend?" value="{{ $case->recommendations }}" />
 
-        <x-form-number-input name="user_id" label="Consultant*" placeholder="User ID" value="{{ $case->user_id }}" />
+        <x-form-select name="user_id" label="Consultant*" :options="$consultant_options" value="{{ $case->user_id }}" />
 
         <x-form-checkboxes name="topics" label="Topics" :values="$case->topics->pluck('id')->toArray()" :options="$topic_options" />
 

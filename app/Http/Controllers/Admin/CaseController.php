@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\DiagnosticCase;
 use App\Models\Topic;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class CaseController extends Controller
@@ -58,8 +59,9 @@ class CaseController extends Controller
         }
 
         $topic_options = Topic::orderBy('name')->pluck('name', 'id')->toArray();
+        $consultant_options = User::orderBy('name')->pluck('name', 'id')->toArray();
 
-        return view('admin.cases.edit', compact('case', 'topic_options'));
+        return view('admin.cases.edit', compact('case', 'topic_options', 'consultant_options'));
     }
 
     public function update(Request $request, DiagnosticCase $case)
